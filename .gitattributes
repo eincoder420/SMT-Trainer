@@ -1,0 +1,15 @@
+# Normalise line endings so the repo stays consistent regardless of who commits.
+* text=auto
+
+# Windows-only tooling: keep CRLF in the working tree.
+*.ps1   text eol=crlf
+*.cmd   text eol=crlf
+*.bat   text eol=crlf
+
+*.cs       text diff=csharp
+*.csproj   text
+*.sln      text eol=crlf
+*.xaml     text
+*.props    text
+*.manifest text
+*.md       text
