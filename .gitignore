@@ -20,3 +20,8 @@ GameDir.props
 # Reference assemblies copied from the game install by Build-Trainer.ps1.
 # These are Walters Games' and Unity's binaries - kept local, never committed.
 lib/
+
+# Icon extracted from Samantha.exe - Walters Games' artwork, kept local.
+Injector/app.ico
+_tools/*.ico
+_tools/*.png

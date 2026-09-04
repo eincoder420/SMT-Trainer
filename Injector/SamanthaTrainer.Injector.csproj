@@ -13,7 +13,16 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <!-- Enforce Administrator elevation via app manifest -->
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!--
+      app.ico is generated from app.png by Build-Trainer.ps1, so only the png is kept in
+      source control. Conditional so the project still builds if the icon is absent.
+    -->
+    <ApplicationIcon Condition="Exists('app.ico')">app.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="app.png" />
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <Optimize>true</Optimize>

@@ -168,6 +168,13 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
+# The exe's file icon has to be a real .ico, so derive it from app.png each build.
+$AppPng = "$PSScriptRoot/Injector/app.png"
+$AppIco = "$PSScriptRoot/Injector/app.ico"
+if (Test-Path $AppPng) {
+    & "$PSScriptRoot/_tools/Convert-PngToIco.ps1" -PngPath $AppPng -IcoPath $AppIco
+}
+
 Write-Host ""
 Write-Host "  [2/2] Publishing injector (single-file exe)..." -ForegroundColor Cyan
 Write-Host ""

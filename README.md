@@ -77,9 +77,13 @@ Because of this, **you must have the .NET 6 Desktop Runtime installed** to run t
 2. Open PowerShell in the root folder.
 3. Run the build script:
    ```powershell
-   .\Build-Trainer.ps1
+   powershell -ExecutionPolicy Bypass -File Build-Trainer.ps1
    ```
 4. The final trainer will be in the `publish/` folder: `publish/SamanthaTrainer.exe`.
+
+`-ExecutionPolicy Bypass` applies to that one invocation only and does not change any
+machine setting. Without it, Windows blocks unsigned scripts by default and the build will
+not start.
 
 The payload is compiled against the game's own assemblies, which is what lets it call the game's
 code directly instead of going through reflection. On the first run the script locates your game
@@ -92,7 +96,7 @@ this repository. If auto-detection cannot find your install, point at it once an
 remembered:
 
 ```powershell
-.\Build-Trainer.ps1 -GameDir "X:\Games\Samantha_v211_beta"
+powershell -ExecutionPolicy Bypass -File Build-Trainer.ps1 -GameDir "X:\Games\Samantha_v211_beta"
 ```
 
 *(The build requires the .NET 6 SDK on your development machine.)*

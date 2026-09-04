@@ -6,7 +6,8 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="app.png">
 
     <Window.Resources>
         <!-- Caption buttons: flat, tinted on hover, red for close. -->
@@ -75,8 +76,8 @@
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center"
                             Margin="12,0,0,0">
-                    <Border Width="8" Height="8" CornerRadius="2"
-                            Background="{StaticResource Accent}" VerticalAlignment="Center"/>
+                    <Image Source="app.png" Width="18" Height="18"
+                           VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality"/>
                     <TextBlock Text="SMT TRAINER" Margin="9,0,0,0" FontSize="11.5"
                                FontWeight="SemiBold" Foreground="{StaticResource Text}"
                                VerticalAlignment="Center"/>
@@ -103,11 +104,15 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0">
-                    <TextBlock Text="SMT TRAINER" FontSize="22" FontWeight="Bold"
-                               Foreground="{StaticResource Accent}"/>
-                    <TextBlock Text="Samantha v2.11 beta" FontSize="12"
-                               Foreground="{StaticResource Muted}" Margin="0,2,0,0"/>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Image Source="app.png" Width="46" Height="46" VerticalAlignment="Center"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <StackPanel VerticalAlignment="Center" Margin="12,0,0,0">
+                        <TextBlock Text="SMT TRAINER" FontSize="22" FontWeight="Bold"
+                                   Foreground="{StaticResource Accent}"/>
+                        <TextBlock Text="Samantha v2.11 beta" FontSize="12"
+                                   Foreground="{StaticResource Muted}" Margin="0,2,0,0"/>
+                    </StackPanel>
                 </StackPanel>
 
                 <Border Grid.Row="1" Background="{StaticResource Panel}" CornerRadius="4"
