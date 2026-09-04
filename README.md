@@ -9,6 +9,27 @@ own code, so changes apply live instead of only after the game happens to refres
 
 No MelonLoader, no BepInEx — the injector is part of this project.
 
+<p align="center">
+  <img src="Preview/1.jpg" width="32%">
+  <img src="Preview/2.jpg" width="32%">
+  <img src="Preview/3.jpg" width="32%">
+</p>
+<p align="center">
+  <img src="Preview/4.jpg" width="32%">
+  <img src="Preview/5.jpg" width="32%">
+  <img src="Preview/6.jpg" width="32%">
+</p>
+<p align="center">
+  <img src="Preview/7.jpg" width="32%">
+  <img src="Preview/8.jpg" width="32%">
+  <img src="Preview/9.jpg" width="32%">
+</p>
+<p align="center">
+  <img src="Preview/10.jpg" width="32%">
+  <img src="Preview/11.jpg" width="32%">
+  <img src="Preview/12.jpg" width="32%">
+</p>
+
 ## Features
 
 *   **Editor › Body**
