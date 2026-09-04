@@ -1,0 +1,23 @@
+public enum Mission_Type
+{
+	speak,
+	food,
+	buy,
+	use,
+	toy_in,
+	toy_out,
+	go_to,
+	go_inside,
+	go_outside,
+	jerk,
+	dance,
+	clothes,
+	home,
+	sleep,
+	call,
+	swim,
+	selfie,
+	expose,
+	run,
+	sex
+}

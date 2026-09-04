@@ -106,21 +106,26 @@ Because of this, **you must have the .NET 6 Desktop Runtime installed** to run t
 machine setting. Without it, Windows blocks unsigned scripts by default and the build will
 not start.
 
-The payload is compiled against the game's own assemblies, which is what lets it call the game's
-code directly instead of going through reflection. On the first run the script locates your game
-install by itself — checking a running `Samantha.exe` first, then the usual folders — and copies
-the assemblies it needs into `lib/`. Every build after that uses `lib/` and does not need the
-game at all.
+**The game is not required to build.** The payload is compiled against the game's assemblies,
+which is what lets it call the game's code directly instead of going through reflection, and the
+ones it needs are checked into `lib/`. A fresh clone builds as-is.
 
-Those assemblies belong to Walters Games and Unity, so `lib/` is deliberately not committed to
-this repository. If auto-detection cannot find your install, point at it once and it is
-remembered:
+If you would rather refresh `lib/` from your own install — after a game update, for example —
+delete the folder and the script will locate the game and repopulate it, or point at it directly:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File Build-Trainer.ps1 -GameDir "X:\Games\Samantha_v211_beta"
 ```
 
 *(The build requires the .NET 6 SDK on your development machine.)*
+
+### Repository layout
+
+*   `lib/` — reference assemblies the payload compiles against.
+*   `_decomp/` — decompiled game source, produced with `ilspycmd`. Reference material for
+    finding fields and methods; nothing in the build reads it.
+*   `_reference/` — the original TML Trainer sources, kept for the menu styling this port
+    was based on.
 
 ## How to Use
 

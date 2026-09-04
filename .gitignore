@@ -7,19 +7,11 @@ publish/
 *.suo
 *.zip
 
-# Decompiled game source, produced locally by ilspycmd for reference while developing.
-# This is Walters Games' code, not ours - it must never be committed or redistributed.
-_decomp/
-
-# Old TML trainer sources kept locally while porting the menu styling.
-_reference/
+# Local helper scripts, not part of the trainer.
+_tools/
 
 # Local path to the game install, written by Build-Trainer.ps1 on first run.
 GameDir.props
-
-# Reference assemblies copied from the game install by Build-Trainer.ps1.
-# These are Walters Games' and Unity's binaries - kept local, never committed.
-lib/
 
 # Icon extracted from Samantha.exe - Walters Games' artwork, kept local.
 Injector/app.ico
