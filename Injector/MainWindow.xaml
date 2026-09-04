@@ -1,0 +1,142 @@
+<Window x:Class="SamanthaTrainer.Injector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SMT Trainer" Height="452" Width="580"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <!-- Caption buttons: flat, tinted on hover, red for close. -->
+        <Style x:Key="CaptionButton" TargetType="Button">
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Foreground" Value="{StaticResource Muted}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2A2536"/>
+                                <Setter Property="Foreground" Value="{StaticResource Text}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CloseButton" TargetType="Button" BasedOn="{StaticResource CaptionButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#C0392B"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="{StaticResource Bg}" CornerRadius="6" BorderThickness="1"
+            BorderBrush="#2E2839">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="18" ShadowDepth="0" Opacity="0.55" Color="Black"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Custom title bar -->
+            <Grid x:Name="TitleBar" Grid.Row="0" Height="34" Background="#1A1622"
+                  MouseLeftButtonDown="OnTitleBarDrag">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center"
+                            Margin="12,0,0,0">
+                    <Border Width="8" Height="8" CornerRadius="2"
+                            Background="{StaticResource Accent}" VerticalAlignment="Center"/>
+                    <TextBlock Text="SMT TRAINER" Margin="9,0,0,0" FontSize="11.5"
+                               FontWeight="SemiBold" Foreground="{StaticResource Text}"
+                               VerticalAlignment="Center"/>
+                    <TextBlock Text="Samantha v2.11 beta" Margin="10,0,0,0" FontSize="11"
+                               Foreground="{StaticResource Muted}" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="&#xE921;" FontFamily="Segoe MDL2 Assets" FontSize="10"
+                            Style="{StaticResource CaptionButton}" Click="OnMinimiseClick"
+                            ToolTip="Minimise"/>
+                    <Button Content="&#xE8BB;" FontFamily="Segoe MDL2 Assets" FontSize="10"
+                            Style="{StaticResource CloseButton}" Click="OnCloseClick"
+                            ToolTip="Close"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Body -->
+            <Grid Grid.Row="1" Margin="22,16,22,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="SMT TRAINER" FontSize="22" FontWeight="Bold"
+                               Foreground="{StaticResource Accent}"/>
+                    <TextBlock Text="Samantha v2.11 beta" FontSize="12"
+                               Foreground="{StaticResource Muted}" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <Border Grid.Row="1" Background="{StaticResource Panel}" CornerRadius="4"
+                        Padding="14,10" Margin="0,16,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse x:Name="StatusDot" Width="9" Height="9" Fill="#7C7590"
+                                 VerticalAlignment="Center"/>
+                        <TextBlock x:Name="StatusText" Text="Waiting for Samantha.exe..."
+                                   Foreground="{StaticResource Text}" FontSize="13"
+                                   VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2" Background="{StaticResource Panel}" CornerRadius="4"
+                        Margin="0,12,0,0">
+                    <ScrollViewer x:Name="LogScroll" VerticalScrollBarVisibility="Auto" Padding="14,10">
+                        <TextBlock x:Name="LogText" Foreground="{StaticResource Muted}"
+                                   FontFamily="Consolas" FontSize="12" TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </Border>
+
+                <Grid Grid.Row="3" Margin="0,14,0,0">
+                    <TextBlock x:Name="HintText" VerticalAlignment="Center" FontSize="12"
+                               Foreground="{StaticResource Muted}"
+                               Text="Press INSERT in-game once injected."/>
+                    <Button x:Name="InjectButton" Content="Inject" HorizontalAlignment="Right"
+                            Width="130" Click="OnInjectClick" IsEnabled="False"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

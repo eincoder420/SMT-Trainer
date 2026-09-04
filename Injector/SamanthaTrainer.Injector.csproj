@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>SamanthaTrainer</AssemblyName>
+    <RootNamespace>SamanthaTrainer.Injector</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!-- Enforce Administrator elevation via app manifest -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <!--
+    The payload is not referenced at compile time. It is built separately against the
+    game's own Mono assemblies and embedded here so the injector ships as one exe.
+  -->
+  <PropertyGroup>
+    <PayloadDll>..\Payload\bin\x64\$(Configuration)\net472\SamanthaTrainer.Payload.dll</PayloadDll>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(PayloadDll)"
+                      Link="SamanthaTrainer.Payload.dll"
+                      LogicalName="SamanthaTrainer.Payload.dll"
+                      Condition="Exists('$(PayloadDll)')" />
+  </ItemGroup>
+
+  <Target Name="VerifyPayloadEmbedded" BeforeTargets="Build">
+    <Error Condition="!Exists('$(PayloadDll)')"
+           Text="Payload not built. Run Build-Trainer.ps1, which builds Payload before the injector." />
+  </Target>
+
+</Project>
