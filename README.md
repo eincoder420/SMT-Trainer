@@ -107,3 +107,13 @@ powershell -ExecutionPolicy Bypass -File Build-Trainer.ps1 -GameDir "X:\Games\Sa
 2. Launch `publish\SamanthaTrainer.exe` as Administrator (it will prompt automatically).
 3. Click **Inject** once the game is detected.
 4. Press **Insert** in-game to open the menu.
+
+## Virus check
+
+🔗 **[VirusTotal scan of the v1.0 release binary](https://www.virustotal.com/gui/file/f2c85ff1e75a2630cbae57e9f75db9a891ab28e545442b1b9f966dd043aced0e?nocache=1)**
+
+SHA-256: `f2c85ff1e75a2630cbae57e9f75db9a891ab28e545442b1b9f966dd043aced0e`
+
+Some engines flag any trainer on sight, since opening another process and writing into it is
+exactly what the technique looks like. The hash above is for the `SamanthaTrainer.exe` attached
+to the v1.0 release — check it matches your download, or build from source yourself.
