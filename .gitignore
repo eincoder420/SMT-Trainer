@@ -10,6 +10,9 @@ publish/
 # Local helper scripts, not part of the trainer.
 _tools/
 
+# Original TML Trainer sources, kept locally while porting the menu styling.
+_reference/
+
 # Local path to the game install, written by Build-Trainer.ps1 on first run.
 GameDir.props
 

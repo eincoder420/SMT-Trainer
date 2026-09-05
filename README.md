@@ -122,10 +122,8 @@ powershell -ExecutionPolicy Bypass -File Build-Trainer.ps1 -GameDir "X:\Games\Sa
 ### Repository layout
 
 *   `lib/` — reference assemblies the payload compiles against.
-*   `_decomp/` — decompiled game source, produced with `ilspycmd`. Reference material for
-    finding fields and methods; nothing in the build reads it.
-*   `_reference/` — the original TML Trainer sources, kept for the menu styling this port
-    was based on.
+*   `_decomp/` — game SDK sources, used to look up the fields and methods the trainer calls.
+    Reference material; nothing in the build reads it.
 
 ## How to Use
 
